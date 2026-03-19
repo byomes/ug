@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Study the Bible — Pastor Training Notes</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap');
+
+  :root {
+    --gold: #b8860b;
+    --gold-light: #e8c44a;
+    --dark: #1a1208;
+    --ink: #2c2010;
+    --warm: #f5f0e8;
+    --parchment: #faf7f0;
+    --accent: #6b2d0a;
+    --muted: #7a6a50;
+    --rule: #d4b896;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', Georgia, serif;
+    background: var(--parchment);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  header {
+    background: var(--dark);
+    color: #fff;
+    padding: 32px 20px 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg, transparent, transparent 18px,
+      rgba(184,134,11,0.07) 18px, rgba(184,134,11,0.07) 19px
+    );
+  }
+  .header-eyebrow {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 12px;
+    position: relative;
+  }
+  header h1 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: clamp(22px, 6vw, 32px);
+    font-weight: 700;
+    line-height: 1.25;
+    color: #fff;
+    position: relative;
+    margin-bottom: 8px;
+  }
+  header h1 span { color: var(--gold-light); }
+  .header-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    font-style: italic;
+    position: relative;
+    margin-top: 6px;
+  }
+
+  .intro-block {
+    background: var(--warm);
+    border-left: 4px solid var(--gold);
+    padding: 24px 20px;
+    text-align: center;
+  }
+  .intro-text {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 14px;
+    line-height: 1.6;
+  }
+
+  /* SOIL badge */
+  .soil-badge {
+    display: inline-flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  .soil-letter {
+    width: 42px;
+    height: 42px;
+    background: var(--dark);
+    color: var(--gold-light);
+    font-family: 'Lora', serif;
+    font-size: 22px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+  }
+
+  /* Time allocation bar */
+  .time-bar {
+    margin: 18px 0 0;
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .time-bar-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 8px 14px 4px;
+  }
+  .time-bar-track {
+    display: flex;
+    height: 28px;
+  }
+  .time-seg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+  }
+  .time-seg.s { background: #4a6741; width: 10%; }
+  .time-seg.o { background: #6b2d0a; width: 50%; }
+  .time-seg.i { background: #b8860b; width: 30%; }
+  .time-seg.l { background: #1a1208; width: 10%; }
+  .time-seg-labels {
+    display: flex;
+    font-size: 10px;
+    color: var(--muted);
+    padding: 4px 0 8px;
+  }
+  .time-seg-labels span { text-align: center; }
+  .time-seg-labels .s { width: 10%; }
+  .time-seg-labels .o { width: 50%; }
+  .time-seg-labels .i { width: 30%; }
+  .time-seg-labels .l { width: 10%; }
+
+  nav {
+    background: #fff;
+    border-bottom: 1px solid var(--rule);
+    padding: 14px 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+  nav a {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 5px 12px;
+    border: 1px solid var(--rule);
+    border-radius: 20px;
+    background: var(--warm);
+    white-space: nowrap;
+  }
+  nav a:active { background: var(--gold); color: #fff; }
+
+  main { padding: 0 0 40px; }
+
+  .principle {
+    margin: 0;
+    padding: 28px 20px 24px;
+    border-bottom: 1px solid var(--rule);
+    background: var(--parchment);
+  }
+  .principle:nth-child(even) { background: #fff; }
+
+  .principle-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .number-badge {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    background: var(--dark);
+    color: var(--gold-light);
+    font-family: 'Lora', serif;
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    margin-top: 2px;
+    letter-spacing: 1px;
+  }
+  .principle-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 3px;
+  }
+  .principle-title {
+    font-family: 'Lora', Georgia, serif;
+    font-size: clamp(17px, 4.5vw, 21px);
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.25;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 20px 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .practice-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .practice-list li {
+    font-size: 15px;
+    line-height: 1.55;
+    padding-left: 20px;
+    position: relative;
+    color: var(--ink);
+  }
+  .practice-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 12px;
+    top: 3px;
+  }
+
+  /* Sub-questions within a step */
+  .sub-list {
+    list-style: none;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .sub-list li {
+    font-size: 14px;
+    line-height: 1.5;
+    padding-left: 18px;
+    position: relative;
+    color: var(--muted);
+  }
+  .sub-list li::before {
+    content: '·';
+    position: absolute;
+    left: 6px;
+    color: var(--gold);
+    font-size: 16px;
+    top: -1px;
+  }
+  .sub-group-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-top: 12px;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .callout {
+    background: var(--dark);
+    color: rgba(255,255,255,0.88);
+    padding: 14px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-top: 14px;
+    font-style: italic;
+  }
+
+  .discussion-list {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  ol.discussion-list { list-style: none; padding-left: 0; }
+  .discussion-list li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .q-num {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-top: 1px;
+  }
+
+  .summary-section {
+    background: var(--dark);
+    color: #fff;
+    padding: 32px 20px;
+  }
+  .summary-section h2 {
+    font-family: 'Lora', serif;
+    font-size: 20px;
+    color: var(--gold-light);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .summary-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(184,134,11,0.3);
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .summary-letter {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    background: var(--gold);
+    color: var(--dark);
+    font-family: 'Lora', serif;
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    margin-top: 2px;
+  }
+  .summary-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 3px;
+  }
+  .summary-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.62);
+    line-height: 1.5;
+  }
+
+  .contact-section {
+    background: var(--warm);
+    border-top: 3px solid var(--gold);
+    padding: 32px 20px;
+    text-align: center;
+  }
+  .contact-identity { margin-bottom: 20px; }
+  .contact-ministry {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .contact-name {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+  .contact-divider {
+    width: 48px;
+    height: 2px;
+    background: var(--gold);
+    margin: 0 auto 20px;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 12px 18px;
+    width: 100%;
+    max-width: 360px;
+  }
+  .contact-item:active { border-color: var(--gold); background: var(--warm); }
+  .contact-icon { font-size: 18px; flex-shrink: 0; }
+  .contact-text { font-size: 14px; font-weight: 600; color: var(--ink); text-align: left; }
+
+  .footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 12px;
+    color: var(--muted);
+    border-top: 1px solid var(--rule);
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="header-eyebrow">Pastor Training Notes</p>
+  <h1>How to Study<br><span>the Bible</span></h1>
+  <p class="header-sub">The S.O.I.L. Method — a four-step approach to Scripture</p>
+</header>
+
+<div class="intro-block">
+  <p class="intro-text">The Bible is a collection of 66 books, written at different times, in different places, to different audiences. In order to study it well, a student must first seek to understand what the original author wrote to the original audience — only then can we explore how it applies today. The S.O.I.L. Method gives us a simple, repeatable framework for doing exactly that.</p>
+
+  <div class="soil-badge">
+    <div class="soil-letter">S</div>
+    <div class="soil-letter">O</div>
+    <div class="soil-letter">I</div>
+    <div class="soil-letter">L</div>
+  </div>
+
+  <div class="time-bar">
+    <p class="time-bar-label">Suggested Time per Step</p>
+    <div class="time-bar-track">
+      <div class="time-seg s">10%</div>
+      <div class="time-seg o">50%</div>
+      <div class="time-seg i">30%</div>
+      <div class="time-seg l">10%</div>
+    </div>
+    <div class="time-seg-labels">
+      <span class="s">Select</span>
+      <span class="o">Observe</span>
+      <span class="i">Interpret</span>
+      <span class="l">Apply</span>
+    </div>
+  </div>
+
+  <p style="font-size:13px;color:var(--muted);margin-top:12px;font-style:italic;">One simple mistake to avoid: moving too fast. The Bible is a rich and deep book — spend most of your time observing before you try to interpret.</p>
+</div>
+
+<nav>
+  <a href="#p1">S · Select</a>
+  <a href="#p2">O · Observe</a>
+  <a href="#p3">I · Interpret</a>
+  <a href="#p4">L · Apply</a>
+</nav>
+
+<main>
+
+  <!-- STEP 1: SELECT -->
+  <section class="principle" id="p1">
+    <div class="principle-header">
+      <div class="number-badge">S</div>
+      <div class="principle-title-block">
+        <p class="principle-label">Step One</p>
+        <h2 class="principle-title">Select the Text</h2>
+      </div>
+    </div>
+
+    <p style="font-size:15px;line-height:1.65;margin-bottom:18px;">The goal of this step is to learn as much as possible about the background of the selected text. This means stepping back and asking questions about the text as a whole — before you read a single word of content.</p>
+
+    <p class="section-label">Questions to Ask</p>
+    <ul class="practice-list">
+      <li>Who was the original author of this text?</li>
+      <li>Who was the original audience?</li>
+      <li>Where does this text fit into the whole Bible's story?</li>
+      <li>What comes before and after the text?</li>
+      <li>When did the events of this text take place?</li>
+      <li>What is the literary genre of the text? (History? Poetry? Letter? Prophecy?)</li>
+    </ul>
+
+    <div class="callout">A good study Bible or Bible dictionary can help you answer these background questions quickly. Knowing the context changes everything.</div>
+
+    <p class="section-label">Discussion Questions</p>
+    <ol class="discussion-list">
+      <li><span class="q-num">1</span><span>Why does it matter who the original audience was before we apply a passage to ourselves?</span></li>
+      <li><span class="q-num">2</span><span>How might knowing the literary genre of a passage change how we read it?</span></li>
+      <li><span class="q-num">3</span><span>What resources do you currently use to understand the background of a Bible passage?</span></li>
+    </ol>
+  </section>
+
+  <!-- STEP 2: OBSERVE -->
+  <section class="principle" id="p2">
+    <div class="principle-header">
+      <div class="number-badge">O</div>
+      <div class="principle-title-block">
+        <p class="principle-label">Step Two — 50% of Your Time</p>
+        <h2 class="principle-title">Observe the Text</h2>
+      </div>
+    </div>
+
+    <p style="font-size:15px;line-height:1.65;margin-bottom:18px;">The goal of this step is to interrogate the text and look for the "who," "where," "when," and "what" details. This step is all about seeing what is there — do not try to make sense of it yet. Just look carefully and write down everything you find.</p>
+
+    <p class="section-label">What to Look For</p>
+
+    <p class="sub-group-label">Who?</p>
+    <ul class="sub-list">
+      <li>A single name: David, Abraham, Peter</li>
+      <li>A people group: Jews, Gentiles, Egyptians</li>
+      <li>An implied group: everyone, angels, soldiers</li>
+      <li>A person's title: pharaoh, pharisee, servant</li>
+    </ul>
+
+    <p class="sub-group-label">Where?</p>
+    <ul class="sub-list">
+      <li>City or country: Jerusalem, Judea, Canaan, Rome</li>
+      <li>Specific location: upper room, Jordan river, Temple</li>
+    </ul>
+
+    <p class="sub-group-label">When?</p>
+    <ul class="sub-list">
+      <li>A specific time: 9 in the morning, the 6th hour</li>
+      <li>Festivals: Pentecost, Sabbath, Passover</li>
+      <li>Implied time: next day, evening, immediately</li>
+      <li>Event time: when he heard, after saying this</li>
+    </ul>
+
+    <p class="sub-group-label">What?</p>
+    <ul class="sub-list">
+      <li>Objects: sheep, bread, stones, water</li>
+      <li>Actions: sat down, taught, baptized, fought</li>
+      <li>Themes: prayer, forgiveness, sin, grace</li>
+    </ul>
+
+    <div class="callout">Spend half of your total study time here. The more carefully you observe, the more accurately you will interpret. Most Bible study errors come from skipping this step.</div>
+
+    <p class="section-label">Discussion Questions</p>
+    <ol class="discussion-list">
+      <li><span class="q-num">4</span><span>Why is it important to separate observation from interpretation? What happens when we mix them too quickly?</span></li>
+      <li><span class="q-num">5</span><span>Pick a short passage — John 3:1-5. Practice: what "who," "where," "when," and "what" details can you find?</span></li>
+      <li><span class="q-num">6</span><span>How does slowing down at this stage help protect us from wrong teaching?</span></li>
+    </ol>
+  </section>
+
+  <!-- STEP 3: INTERPRET -->
+  <section class="principle" id="p3">
+    <div class="principle-header">
+      <div class="number-badge">I</div>
+      <div class="principle-title-block">
+        <p class="principle-label">Step Three — 30% of Your Time</p>
+        <h2 class="principle-title">Interpret the Text</h2>
+      </div>
+    </div>
+
+    <p style="font-size:15px;line-height:1.65;margin-bottom:18px;">The goal of this step is to make sense of the observations from step two. Now that you have a list of what you have "seen," you need to begin to understand what those observations mean. Ask literary, historical, and theological questions.</p>
+
+    <p class="section-label">Literary Questions</p>
+    <ul class="sub-list">
+      <li>Are there key words, terms, or repeated themes?</li>
+      <li>Does the original language (Hebrew or Greek) reveal anything?</li>
+      <li>Are there words used elsewhere in the Bible that connect to this passage?</li>
+    </ul>
+
+    <p class="section-label">Historical Questions</p>
+    <ul class="sub-list">
+      <li>When and where did this passage take place?</li>
+      <li>What is the political or cultural landscape at the time?</li>
+      <li>Where is this passage in the big Bible story?</li>
+    </ul>
+
+    <p class="section-label">Theological Questions</p>
+    <ul class="sub-list">
+      <li>What does this passage teach about God?</li>
+      <li>What does this passage teach about salvation?</li>
+      <li>What does this passage teach about humanity?</li>
+      <li>What does this passage teach about the Church?</li>
+    </ul>
+
+    <div class="callout">The goal of interpretation is always to find the one meaning the original author intended. A passage cannot mean something to us today that it could not have meant to the original audience.</div>
+
+    <p class="section-label">Discussion Questions</p>
+    <ol class="discussion-list">
+      <li><span class="q-num">7</span><span>What is the difference between what a passage means and what it means to me? Why does that distinction matter?</span></li>
+      <li><span class="q-num">8</span><span>How can comparing a passage with other Scriptures help us interpret it correctly?</span></li>
+      <li><span class="q-num">9</span><span>Can you think of a passage that is commonly misinterpreted? What goes wrong in the interpretation process?</span></li>
+    </ol>
+  </section>
+
+  <!-- STEP 4: APPLY -->
+  <section class="principle" id="p4">
+    <div class="principle-header">
+      <div class="number-badge">L</div>
+      <div class="principle-title-block">
+        <p class="principle-label">Step Four — Life Application</p>
+        <h2 class="principle-title">Apply the Text to Life</h2>
+      </div>
+    </div>
+
+    <p style="font-size:15px;line-height:1.65;margin-bottom:18px;">The goal of this final step is to ask how the text could apply to one's personal life. This is the only step that has the modern perspective in view. Only after we know what the passage meant to its original audience can we ask what it means for us today.</p>
+
+    <p class="section-label">Questions to Ask</p>
+    <ul class="practice-list">
+      <li>How can this passage apply to my life today?</li>
+      <li>What principles in the text carry forward into modern life?</li>
+      <li>Does the passage teach anything for the Church today?</li>
+      <li>Does the passage speak to any social issues in my community?</li>
+      <li>Can I share encouragement or challenge from this passage with others?</li>
+    </ul>
+
+    <div class="callout">Application is the goal of all Bible study — but it must come last. Getting to application too quickly is the most common mistake. Do the work first, then ask: what does God want me to do with this?</div>
+
+    <p class="section-label">Discussion Questions</p>
+    <ol class="discussion-list">
+      <li><span class="q-num">10</span><span>Why must application always come after careful observation and interpretation?</span></li>
+      <li><span class="q-num">11</span><span>How can the S.O.I.L. Method help you prepare better sermons and teaching for your congregation?</span></li>
+      <li><span class="q-num">12</span><span>How will you begin to use this method in your personal Bible study this week?</span></li>
+    </ol>
+  </section>
+
+  <!-- SUMMARY -->
+  <section class="summary-section">
+    <h2>The S.O.I.L. Method at a Glance</h2>
+    <p style="font-size:14px;color:rgba(255,255,255,0.6);text-align:center;margin-bottom:22px;font-style:italic;">A simple, repeatable method for studying any passage in the Bible. Follow the steps in order — do not rush to application.</p>
+
+    <div class="summary-card">
+      <div class="summary-letter">S</div>
+      <div>
+        <p class="summary-title">Select — 10%</p>
+        <p class="summary-desc">Choose your passage and gather background information about the author, audience, and context.</p>
+      </div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-letter">O</div>
+      <div>
+        <p class="summary-title">Observe — 50%</p>
+        <p class="summary-desc">Look carefully at who, where, when, and what. Do not interpret yet — just see what is there.</p>
+      </div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-letter">I</div>
+      <div>
+        <p class="summary-title">Interpret — 30%</p>
+        <p class="summary-desc">Ask literary, historical, and theological questions to discover what the passage meant to its original audience.</p>
+      </div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-letter">L</div>
+      <div>
+        <p class="summary-title">Life Application — 10%</p>
+        <p class="summary-desc">Only now ask: what does God want me to do with this truth today?</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<section class="contact-section">
+  <div class="contact-identity">
+    <p class="contact-ministry">Faith Makes Sense</p>
+    <p class="contact-name">Bishop Bill Yomes</p>
+  </div>
+  <div class="contact-divider"></div>
+  <div class="contact-links">
+    <a class="contact-item" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#98;&#105;&#108;&#108;&#64;&#102;&#97;&#105;&#116;&#104;&#109;&#97;&#107;&#101;&#115;&#115;&#101;&#110;&#115;&#101;&#46;&#99;&#111;&#109;">
+      <span class="contact-icon">✉</span>
+      <span class="contact-text">bill&#64;faithmakessense&#46;com</span>
+    </a>
+    <a class="contact-item" href="https://wa.me/13025027288">
+      <span class="contact-icon">💬</span>
+      <span class="contact-text">WhatsApp: +1 (302) 502-7288</span>
+    </a>
+    <a class="contact-item" href="https://faithmakessense.com" target="_blank">
+      <span class="contact-icon">🌐</span>
+      <span class="contact-text">faithmakessense.com</span>
+    </a>
+  </div>
+</section>
+
+<footer class="footer">
+  Pastor Training Notes · How to Study the Bible · Faith Makes Sense
+</footer>
+
+</body>
+</html>

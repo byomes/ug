@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Big Bible Story — Pastor Training Notes</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap');
+
+  :root {
+    --gold: #b8860b;
+    --gold-light: #e8c44a;
+    --dark: #1a1208;
+    --ink: #2c2010;
+    --warm: #f5f0e8;
+    --parchment: #faf7f0;
+    --accent: #6b2d0a;
+    --muted: #7a6a50;
+    --rule: #d4b896;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', Georgia, serif;
+    background: var(--parchment);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  header {
+    background: var(--dark);
+    color: #fff;
+    padding: 32px 20px 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg, transparent, transparent 18px,
+      rgba(184,134,11,0.07) 18px, rgba(184,134,11,0.07) 19px
+    );
+  }
+  .header-eyebrow {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 12px;
+    position: relative;
+  }
+  header h1 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: clamp(22px, 6vw, 32px);
+    font-weight: 700;
+    line-height: 1.25;
+    color: #fff;
+    position: relative;
+    margin-bottom: 8px;
+  }
+  header h1 span { color: var(--gold-light); }
+  .header-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    font-style: italic;
+    position: relative;
+    margin-top: 6px;
+  }
+
+  .intro-block {
+    background: var(--warm);
+    border-left: 4px solid var(--gold);
+    padding: 24px 20px;
+    text-align: center;
+  }
+  .intro-text {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 14px;
+    line-height: 1.6;
+  }
+  .key-verse {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  .key-verse cite {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 1px;
+    margin-top: 8px;
+    text-transform: uppercase;
+  }
+
+  nav {
+    background: #fff;
+    border-bottom: 1px solid var(--rule);
+    padding: 14px 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+  nav a {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 5px 12px;
+    border: 1px solid var(--rule);
+    border-radius: 20px;
+    background: var(--warm);
+    white-space: nowrap;
+  }
+  nav a:active { background: var(--gold); color: #fff; }
+
+  main { padding: 0 0 40px; }
+
+  .principle {
+    margin: 0;
+    padding: 28px 20px 24px;
+    border-bottom: 1px solid var(--rule);
+    background: var(--parchment);
+  }
+  .principle:nth-child(even) { background: #fff; }
+
+  .principle-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .number-badge {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    background: var(--dark);
+    color: var(--gold-light);
+    font-family: 'Lora', serif;
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    margin-top: 2px;
+  }
+  .principle-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 3px;
+  }
+  .principle-title {
+    font-family: 'Lora', Georgia, serif;
+    font-size: clamp(17px, 4.5vw, 21px);
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.25;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 20px 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .scripture-list { display: flex; flex-direction: column; gap: 12px; }
+  .scripture-item {
+    background: var(--warm);
+    border-left: 3px solid var(--gold);
+    padding: 12px 14px;
+    border-radius: 0 4px 4px 0;
+  }
+  .scripture-text {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.65;
+    margin-bottom: 5px;
+  }
+  .scripture-ref {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .practice-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .practice-list li {
+    font-size: 15px;
+    line-height: 1.55;
+    padding-left: 20px;
+    position: relative;
+    color: var(--ink);
+  }
+  .practice-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 12px;
+    top: 3px;
+  }
+
+  .callout {
+    background: var(--dark);
+    color: rgba(255,255,255,0.88);
+    padding: 14px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-top: 14px;
+    font-style: italic;
+  }
+
+  .discussion-list {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  ol.discussion-list { list-style: none; padding-left: 0; }
+  .discussion-list li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .q-num {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-top: 1px;
+  }
+
+  .summary-section {
+    background: var(--dark);
+    color: #fff;
+    padding: 32px 20px;
+  }
+  .summary-section h2 {
+    font-family: 'Lora', serif;
+    font-size: 20px;
+    color: var(--gold-light);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .summary-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(184,134,11,0.3);
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .summary-num {
+    flex-shrink: 0;
+    font-family: 'Lora', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-top: 2px;
+  }
+  .summary-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 3px;
+  }
+  .summary-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.62);
+    line-height: 1.5;
+  }
+
+  .contact-section {
+    background: var(--warm);
+    border-top: 3px solid var(--gold);
+    padding: 32px 20px;
+    text-align: center;
+  }
+  .contact-identity { margin-bottom: 20px; }
+  .contact-ministry {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .contact-name {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+  .contact-divider {
+    width: 48px;
+    height: 2px;
+    background: var(--gold);
+    margin: 0 auto 20px;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 12px 18px;
+    width: 100%;
+    max-width: 360px;
+  }
+  .contact-item:active { border-color: var(--gold); background: var(--warm); }
+  .contact-icon { font-size: 18px; flex-shrink: 0; }
+  .contact-text { font-size: 14px; font-weight: 600; color: var(--ink); text-align: left; }
+
+  .footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 12px;
+    color: var(--muted);
+    border-top: 1px solid var(--rule);
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="header-eyebrow">Pastor Training Notes</p>
+  <h1>The Big<br><span>Bible Story</span></h1>
+  <p class="header-sub">A 30,000-foot view of Scripture from beginning to end</p>
+</header>
+
+<div class="intro-block">
+  <p class="intro-text">The Bible is a collection of 66 books, written at different times, in different places, to different audiences. But the Bible is also the Word of God — and despite all those differences, it tells one big story from beginning to end. When we "zoom out" and look at the whole Bible, we can see the big picture: four movements that explain everything.</p>
+  <p class="key-verse">"In the beginning, God created the heavens and the earth."<cite>Genesis 1:1</cite></p>
+</div>
+
+<nav>
+  <a href="#p1">1 · Creation</a>
+  <a href="#p2">2 · Corruption</a>
+  <a href="#p3">3 · Redemption</a>
+  <a href="#p4">4 · Restoration</a>
+</nav>
+
+<main>
+
+  <!-- PART 1: CREATION -->
+  <section class="principle" id="p1">
+    <div class="principle-header">
+      <div class="number-badge">1</div>
+      <div class="principle-title-block">
+        <p class="principle-label">Part One</p>
+        <h2 class="principle-title">Creation</h2>
+      </div>
+    </div>
+
+    <p style="font-size:15px;line-height:1.65;margin-bottom:18px;">In the beginning, God created the heavens and the earth. The story of the Bible begins with a powerful Creator who made our world in six days. He creates different parts of our planet each day, noting that each day is "good." On the sixth day, God creates humanity, stating that now creation is "very good." God then creates a garden at a place called Eden where He walks and talks with Adam and Eve.</p>
+
+    <p class="section-label">Key Scriptures</p>
+    <div class="scripture-list">
+      <div class="scripture-item">
+        <p class="scripture-text">"In the beginning, God created the heavens and the earth."</p>
+        <p class="scripture-ref">Genesis 1:1</p>
+      </div>
+      <div class="scripture-item">
+        <p class="scripture-text">"God saw all that he had made, and it was very good."</p>
+        <p class="scripture-ref">Genesis 1:31</p>
+      </div>
+      <div class="scripture-item">
+        <p class="scripture-text">"Then the Lord God planted a garden in Eden, in the east, and there he placed the man he had made."</p>
+        <p class="scripture-ref">Genesis 2:8</p>
+      </div>
+    </div>
+
+    <div class="callout">Main Idea: Humanity was created to live in relationship with God in His "very good" creation.</div>
+
+    <p class="section-label">Discussion Questions</p>
+    <ol class="discussion-list">
+      <li><span class="q-num">1</span><span>What does it tell us about God that He called His creation "very good"?</span></li>
+      <li><span class="q-num">2</span><span>What does it mean that God "walked and talked" with Adam and Eve in the Garden?</span></li>
+      <li><span class="q-num">3</span><span>How does knowing God created everything change the way we think about the world around us?</span></li>
+    </ol>
+  </section>
+
+  <!-- PART 2: CORRUPTION -->
+  <section class="principle" id="p2">
+    <div class="principle-header">
+      <div class="number-badge">2</div>
+      <div class="principle-title-block">
+        <p class="principle-label">Part Two</p>
+        <h2 class="principle-title">Corruption</h2>
+      </div>
+    </div>
+
+    <p style="font-size:15px;line-height:1.65;margin-bottom:18px;">In the middle of the Garden, God placed two trees: the Tree of Life and the Tree of the Knowledge of Good and Evil. God instructed humanity not to eat from the second tree — death would be the consequence if they stepped outside His design. Unfortunately, Adam and Eve both ate from the forbidden tree. This first human sin had serious consequences for all of creation.</p>
+
+    <p class="section-label">Key Scriptures</p>
+    <div class="scripture-list">
+      <div class="scripture-item">
+        <p class="scripture-text">"But you must not eat from the tree of the knowledge of good and evil, for when you eat from it you will certainly die."</p>
+        <p class="scripture-ref">Genesis 2:17</p>
+      </div>
+      <div class="scripture-item">
+        <p class="scripture-text">"Cursed is the ground because of you; through painful toil you will eat food from it all the days of your life."</p>
+        <p class="scripture-ref">Genesis 3:17</p>
+      </div>
+    </div>
+
+    <p class="section-label">Consequences of the Fall</p>
+    <ul class="practice-list">
+      <li>Humanity and the devil are now at war.</li>
+      <li>Childbearing and marriage became more difficult.</li>
+      <li>Humans must now toil to grow food from the ground.</li>
+      <li>Physical and spiritual death entered creation.</li>
+      <li>The death of a sinless human would be required as payment for this choice.</li>
+    </ul>
+
+    <div class="callout">Main Idea: The world we live in today is a corruption of God's original design. Creation needs to be redeemed.</div>
+
+    <p class="section-label">Discussion Questions</p>
+    <ol class="discussion-list">
+      <li><span class="q-num">4</span><span>Why do you think God placed the forbidden tree in the Garden at all?</span></li>
+      <li><span class="q-num">5</span><span>How do we see the effects of the Fall in our communities and families today?</span></li>
+      <li><span class="q-num">6</span><span>What does it mean that sin is "inherited"? How does that change the way we understand human nature?</span></li>
+    </ol>
+  </section>
+
+  <!-- PART 3: REDEMPTION -->
+  <section class="principle" id="p3">
+    <div class="principle-header">
+      <div class="number-badge">3</div>
+      <div class="principle-title-block">
+        <p class="principle-label">Part Three</p>
+        <h2 class="principle-title">Redemption</h2>
+      </div>
+    </div>
+
+    <p style="font-size:15px;line-height:1.65;margin-bottom:18px;">The redemption price for the original human sin is the death of a sinless human being. Because sin has now infected all of creation, every human born naturally inherits the tendency to choose their own desires over God's design. This is why God sent His own Son — born miraculously and sinlessly — to give His life as payment for the original sin of disobedience in the Garden of Eden.</p>
+
+    <p class="section-label">Key Scriptures</p>
+    <div class="scripture-list">
+      <div class="scripture-item">
+        <p class="scripture-text">"For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life."</p>
+        <p class="scripture-ref">John 3:16</p>
+      </div>
+      <div class="scripture-item">
+        <p class="scripture-text">"The Word became flesh and made his dwelling among us."</p>
+        <p class="scripture-ref">John 1:14</p>
+      </div>
+      <div class="scripture-item">
+        <p class="scripture-text">"Just as sin entered the world through one man, and death through sin... so also through the obedience of the one man the many will be made righteous."</p>
+        <p class="scripture-ref">Romans 5:12, 19</p>
+      </div>
+    </div>
+
+    <p class="section-label">Why Jesus?</p>
+    <ul class="practice-list">
+      <li>Jesus is the only person who lived a completely sinless human life.</li>
+      <li>Jesus died as full payment for the penalty of human sin.</li>
+      <li>Jesus rose from the dead, proving He is God.</li>
+      <li>This is why salvation can only be found in the name of Jesus.</li>
+    </ul>
+
+    <div class="callout">Main Idea: Jesus had to die as a sinless human being to pay the penalty for the original sin in Eden. All who repent and trust in Him will be saved.</div>
+
+    <p class="section-label">Discussion Questions</p>
+    <ol class="discussion-list">
+      <li><span class="q-num">7</span><span>Why was it necessary for Jesus to be both fully God and fully human?</span></li>
+      <li><span class="q-num">8</span><span>How would you explain to someone in your community why Jesus is the only way to be saved?</span></li>
+      <li><span class="q-num">9</span><span>What difference does the resurrection make? Why is it not enough that Jesus simply died?</span></li>
+    </ol>
+  </section>
+
+  <!-- PART 4: RESTORATION -->
+  <section class="principle" id="p4">
+    <div class="principle-header">
+      <div class="number-badge">4</div>
+      <div class="principle-title-block">
+        <p class="principle-label">Part Four</p>
+        <h2 class="principle-title">Restoration</h2>
+      </div>
+    </div>
+
+    <p style="font-size:15px;line-height:1.65;margin-bottom:18px;">Because of the death and resurrection of Jesus, those who place their faith in Him can be forgiven of sin and restored to right relationship with God. However, creation itself is still corrupt and must also be restored. This is what happens at the end of the Bible. In the final chapters of Revelation, the big story ends with the full restoration of creation — humanity once again free to live in relationship with the Creator in a sinless, Eden-like world.</p>
+
+    <p class="section-label">Key Scriptures</p>
+    <div class="scripture-list">
+      <div class="scripture-item">
+        <p class="scripture-text">"Then I saw a new heaven and a new earth... and I heard a loud voice from the throne saying, 'Look! God's dwelling place is now among the people, and he will dwell with them.'"</p>
+        <p class="scripture-ref">Revelation 21:1–3</p>
+      </div>
+      <div class="scripture-item">
+        <p class="scripture-text">"He will wipe every tear from their eyes. There will be no more death or mourning or crying or pain, for the old order of things has passed away."</p>
+        <p class="scripture-ref">Revelation 21:4</p>
+      </div>
+    </div>
+
+    <p class="section-label">What This Means for Us</p>
+    <ul class="practice-list">
+      <li>Jesus has already purchased forgiveness — we can be right with God today.</li>
+      <li>Creation is still waiting for full restoration — this world is not our final home.</li>
+      <li>The restoration of all things will happen at the return of Christ.</li>
+      <li>The Big Bible Story ends exactly where it began — God dwelling with His people in a "very good" creation.</li>
+    </ul>
+
+    <div class="callout">Main Idea: While Jesus has already purchased forgiveness for sin, creation is still waiting for full redemption and a return to an Eden-like state.</div>
+
+    <p class="section-label">Discussion Questions</p>
+    <ol class="discussion-list">
+      <li><span class="q-num">10</span><span>How does knowing the story ends in restoration change the way you face suffering today?</span></li>
+      <li><span class="q-num">11</span><span>What is the difference between being personally forgiven now and the full restoration of creation that is still coming?</span></li>
+      <li><span class="q-num">12</span><span>How can you use the four-part story — Creation, Corruption, Redemption, Restoration — to share the gospel with someone in your community?</span></li>
+    </ol>
+  </section>
+
+  <!-- SUMMARY -->
+  <section class="summary-section">
+    <h2>The Big Bible Story at a Glance</h2>
+    <p style="font-size:14px;color:rgba(255,255,255,0.6);text-align:center;margin-bottom:22px;font-style:italic;">Every book of the Bible is part of this one story. These four movements explain where we came from, what went wrong, how God fixed it, and where history is going.</p>
+
+    <div class="summary-card">
+      <div class="summary-num">1</div>
+      <div>
+        <p class="summary-title">Creation</p>
+        <p class="summary-desc">God made a "very good" world and placed humanity in it to live in relationship with Him.</p>
+      </div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-num">2</div>
+      <div>
+        <p class="summary-title">Corruption</p>
+        <p class="summary-desc">Human disobedience broke the relationship with God and corrupted all of creation.</p>
+      </div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-num">3</div>
+      <div>
+        <p class="summary-title">Redemption</p>
+        <p class="summary-desc">Jesus — fully God, fully human — died and rose to pay for sin and restore our relationship with God.</p>
+      </div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-num">4</div>
+      <div>
+        <p class="summary-title">Restoration</p>
+        <p class="summary-desc">Christ will return to fully restore creation. The story ends where it began — God with His people.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<section class="contact-section">
+  <div class="contact-identity">
+    <p class="contact-ministry">Faith Makes Sense</p>
+    <p class="contact-name">Bishop Bill Yomes</p>
+  </div>
+  <div class="contact-divider"></div>
+  <div class="contact-links">
+    <a class="contact-item" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#98;&#105;&#108;&#108;&#64;&#102;&#97;&#105;&#116;&#104;&#109;&#97;&#107;&#101;&#115;&#115;&#101;&#110;&#115;&#101;&#46;&#99;&#111;&#109;">
+      <span class="contact-icon">✉</span>
+      <span class="contact-text">bill&#64;faithmakessense&#46;com</span>
+    </a>
+    <a class="contact-item" href="https://wa.me/13025027288">
+      <span class="contact-icon">💬</span>
+      <span class="contact-text">WhatsApp: +1 (302) 502-7288</span>
+    </a>
+    <a class="contact-item" href="https://faithmakessense.com" target="_blank">
+      <span class="contact-icon">🌐</span>
+      <span class="contact-text">faithmakessense.com</span>
+    </a>
+  </div>
+</section>
+
+<footer class="footer">
+  Pastor Training Notes · The Big Bible Story · Faith Makes Sense
+</footer>
+
+</body>
+</html>
