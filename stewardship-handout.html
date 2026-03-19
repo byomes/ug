@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5 Biblical Principles of Stewardship</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap');
+
+  :root {
+    --gold: #b8860b;
+    --gold-light: #e8c84a;
+    --dark: #1a1208;
+    --ink: #2c2010;
+    --warm: #f5f0e8;
+    --parchment: #faf7f0;
+    --accent: #6b2d0a;
+    --muted: #7a6a50;
+    --rule: #d4b896;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  .home-bar {
+    background: var(--dark);
+    padding: 10px 16px;
+    border-bottom: 1px solid rgba(184,134,11,0.3);
+  }
+  .home-btn {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--gold-light);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  .home-btn:active { color: #fff; }
+
+  body {
+    font-family: 'Source Sans 3', Georgia, serif;
+    background: var(--parchment);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--dark);
+    color: #fff;
+    padding: 32px 20px 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 18px,
+      rgba(184,134,11,0.07) 18px,
+      rgba(184,134,11,0.07) 19px
+    );
+  }
+  .header-eyebrow {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 12px;
+    position: relative;
+  }
+  header h1 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: clamp(22px, 6vw, 32px);
+    font-weight: 700;
+    line-height: 1.25;
+    color: #fff;
+    position: relative;
+    margin-bottom: 8px;
+  }
+  header h1 span {
+    color: var(--gold-light);
+  }
+  .header-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    font-style: italic;
+    position: relative;
+    margin-top: 6px;
+  }
+
+  /* ── INTRO QUOTE ── */
+  .intro-block {
+    background: var(--warm);
+    border-left: 4px solid var(--gold);
+    margin: 0;
+    padding: 24px 20px;
+    text-align: center;
+  }
+  .intro-text {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 14px;
+    line-height: 1.6;
+  }
+  .key-verse {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  .key-verse cite {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 1px;
+    margin-top: 8px;
+    text-transform: uppercase;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: #fff;
+    border-bottom: 1px solid var(--rule);
+    padding: 14px 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+  nav a {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 5px 12px;
+    border: 1px solid var(--rule);
+    border-radius: 20px;
+    background: var(--warm);
+    white-space: nowrap;
+  }
+  nav a:active { background: var(--gold); color: #fff; }
+
+  /* ── MAIN CONTENT ── */
+  main { padding: 0 0 40px; }
+
+  /* ── PRINCIPLE CARD ── */
+  .principle {
+    margin: 0;
+    padding: 28px 20px 24px;
+    border-bottom: 1px solid var(--rule);
+    background: var(--parchment);
+  }
+  .principle:nth-child(even) {
+    background: #fff;
+  }
+
+  .principle-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .number-badge {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    background: var(--dark);
+    color: var(--gold-light);
+    font-family: 'Lora', serif;
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    margin-top: 2px;
+  }
+  .principle-title-block {}
+  .principle-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 3px;
+  }
+  .principle-title {
+    font-family: 'Lora', Georgia, serif;
+    font-size: clamp(17px, 4.5vw, 21px);
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.25;
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 20px 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  /* ── SCRIPTURE BLOCK ── */
+  .scripture-list { display: flex; flex-direction: column; gap: 12px; }
+  .scripture-item {
+    background: var(--warm);
+    border-left: 3px solid var(--gold);
+    padding: 12px 14px;
+    border-radius: 0 4px 4px 0;
+  }
+  .scripture-text {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.65;
+    margin-bottom: 5px;
+  }
+  .scripture-ref {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ── PRACTICE LIST ── */
+  .practice-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .practice-list li {
+    font-size: 15px;
+    line-height: 1.55;
+    padding-left: 20px;
+    position: relative;
+    color: var(--ink);
+  }
+  .practice-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 12px;
+    top: 3px;
+  }
+
+  /* ── CALLOUT ── */
+  .callout {
+    background: var(--dark);
+    color: rgba(255,255,255,0.88);
+    padding: 14px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-top: 14px;
+    font-style: italic;
+  }
+
+  /* ── DISCUSSION ── */
+  .discussion-list {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  ol.discussion-list {
+    list-style: none;
+    padding-left: 0;
+  }
+  .discussion-list li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .q-num {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-top: 1px;
+  }
+
+  /* ── SUMMARY ── */
+  .summary-section {
+    background: var(--dark);
+    color: #fff;
+    padding: 32px 20px;
+  }
+  .summary-section h2 {
+    font-family: 'Lora', serif;
+    font-size: 20px;
+    color: var(--gold-light);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .summary-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(184,134,11,0.3);
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .summary-num {
+    flex-shrink: 0;
+    font-family: 'Lora', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-top: 2px;
+  }
+  .summary-body {}
+  .summary-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 3px;
+  }
+  .summary-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.62);
+    line-height: 1.5;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 12px;
+    color: var(--muted);
+    border-top: 1px solid var(--rule);
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+
+<div class="home-bar"><a href="index.html" class="home-btn">← All Teachings</a></div>
+
+<header>
+  <p class="header-eyebrow">Pastor Training Notes</p>
+  <h1>5 Biblical Principles<br>of <span>Stewardship</span></h1>
+  <p class="header-sub">God's wisdom for every nation and generation</p>
+</header>
+
+<div class="intro-block">
+  <p class="intro-text">Money is one of the most frequently addressed topics in Scripture — not because God is primarily concerned with finances, but because how we handle money reveals the true condition of our hearts and our trust in God.</p>
+  <p class="key-verse">"No one can serve two masters. Either you will hate the one and love the other, or you will be devoted to the one and despise the other. You cannot serve both God and money."<cite>Matthew 6:24</cite></p>
+</div>
+
+<nav>
+  <a href="#p1">1 · Stewardship</a>
+  <a href="#p2">2 · Accountability</a>
+  <a href="#p3">3 · Debt</a>
+  <a href="#p4">4 · Planning</a>
+  <a href="#p5">5 · Tent-Making</a>
+</nav>
+
+<main>
+
+  <!-- PRINCIPLE 1 -->
+  <section class="principle" id="p1">
+    <div class="principle-header">
+      <div class="number-badge">1</div>
+      <div class="principle-title-block">
+        <p class="principle-label">Principle One</p>
+        <h2 class="principle-title">We are stewards, not owners.</h2>
+      </div>
+    </div>
+
+    <p style="font-size:15px;line-height:1.65;margin-bottom:18px;">The biblical view of money begins here: nothing we possess actually belongs to us. God is the creator and owner of all things. We are simply servant managers, entrusted with what belongs to Him.</p>
+
+    <p class="section-label">Key Scriptures</p>
+    <div class="scripture-list">
+      <div class="scripture-item">
+        <p class="scripture-text">"The earth is the Lord's, and everything in it, the world, and all who live in it."</p>
+        <p class="scripture-ref">Psalm 24:1</p>
+      </div>
+      <div class="scripture-item">
+        <p class="scripture-text">"You may say to yourself, 'My power and the strength of my hands have produced this wealth for me.' But remember the Lord your God, for it is he who gives you the ability to produce wealth."</p>
+        <p class="scripture-ref">Deuteronomy 8:17–18</p>
+      </div>
+      <div class="scripture-item">
+        <p class="scripture-text">"And if you have not been trustworthy with someone else's property, who will give you property of your own?"</p>
+        <p class="scripture-ref">Luke 16:12</p>
+      </div>
+    </div>
+
+    <p class="section-label">What This Means in Practice</p>
+    <ul class="practice-list">
+      <li>Our income, land, livestock, and possessions are gifts from God, not personal achievements.</li>
+      <li>A steward does not waste what belongs to the master.</li>
+      <li>Generosity flows naturally from this truth: if it is God's, we can give it freely.</li>
+      <li>Greed is a form of theft — claiming as our own what belongs to God.</li>
+    </ul>
+
+    <p class="section-label">Discussion Questions</p>
+    <ol class="discussion-list">
+      <li><span class="q-num">1</span><span>If someone gives you a field to plant crops for them, who owns the harvest?</span></li>
+      <li><span class="q-num">2</span><span>How does calling yourself a 'steward' instead of an 'owner' change the way you think about your money?</span></li>
+      <li><span class="q-num">3</span><span>What is one thing you have been treating as yours that actually belongs to God?</span></li>
+    </ol>
+  </section>
+
+  <!-- PRINCIPLE 2 -->
+  <section class="principle" id="p2">
+    <div class="principle-header">
+      <div class="number-badge">2</div>
+      <div class="principle-title-block">
+        <p class="principle-label">Principle Two</p>
+        <h2 class="principle-title">Stewardship implies accountability.</h2>
+      </div>
+    </div>
+
+    <p style="font-size:15px;line-height:1.65;margin-bottom:18px;">A steward does not only manage — a steward must give an account. Scripture is clear that every person will one day answer to God for how they handled the resources entrusted to them.</p>
+
+    <p class="section-label">Key Scriptures</p>
+    <div class="scripture-list">
+      <div class="scripture-item">
+        <p class="scripture-text">"Then he called him in and asked him, 'What is this I hear about you? Give an account of your management, because you cannot be manager any longer.'"</p>
+        <p class="scripture-ref">Luke 16:2</p>
+      </div>
+      <div class="scripture-item">
+        <p class="scripture-text">"After a long time the master of those servants returned and settled accounts with them."</p>
+        <p class="scripture-ref">Matthew 25:19</p>
+      </div>
+      <div class="scripture-item">
+        <p class="scripture-text">"So then, each of us will give an account of ourselves to God."</p>
+        <p class="scripture-ref">Romans 14:12</p>
+      </div>
+      <div class="scripture-item">
+        <p class="scripture-text">"Whoever can be trusted with very little can also be trusted with much, and whoever is dishonest with very little will also be dishonest with much."</p>
+        <p class="scripture-ref">Luke 16:10</p>
+      </div>
+    </div>
+
+    <p class="section-label">What This Means in Practice</p>
+    <ul class="practice-list">
+      <li>Keep records of income and spending — wise stewards know where the money goes.</li>
+      <li>Financial transparency in ministry builds trust and honors God.</li>
+      <li>Small amounts matter. Faithfulness in little things prepares us for greater responsibility.</li>
+      <li>Accountability to others (a spouse, elders, or a council) protects us from temptation.</li>
+    </ul>
+
+    <div class="callout">For ministry leaders especially: the church's money is not the pastor's money. It belongs to God and is given in trust by the congregation. Clear accounting is not optional — it is required as an example of faithfulness.</div>
+
+    <p class="section-label">Discussion Questions</p>
+    <ol class="discussion-list">
+      <li><span class="q-num">4</span><span>How do you currently track your household income and spending?</span></li>
+      <li><span class="q-num">5</span><span>In your community, what does financial accountability in a church look like? What could be improved?</span></li>
+      <li><span class="q-num">6</span><span>What does it mean to you that you will one day give an account to God for how you used your money?</span></li>
+    </ol>
+  </section>
+
+  <!-- PRINCIPLE 3 -->
+  <section class="principle" id="p3">
+    <div class="principle-header">
+      <div class="number-badge">3</div>
+      <div class="principle-title-block">
+        <p class="principle-label">Principle Three</p>
+        <h2 class="principle-title">Debt is a prison to be avoided.</h2>
+      </div>
+    </div>
+
+    <p style="font-size:15px;line-height:1.65;margin-bottom:18px;">Scripture does not forbid all borrowing, but it consistently warns that debt brings bondage. A person in debt is no longer fully free — they are bound to their creditor.</p>
+
+    <p class="section-label">Key Scriptures</p>
+    <div class="scripture-list">
+      <div class="scripture-item">
+        <p class="scripture-text">"The rich rule over the poor, and the borrower is slave to the lender."</p>
+        <p class="scripture-ref">Proverbs 22:7</p>
+      </div>
+      <div class="scripture-item">
+        <p class="scripture-text">"Let no debt remain outstanding, except the continuing debt to love one another."</p>
+        <p class="scripture-ref">Romans 13:8</p>
+      </div>
+      <div class="scripture-item">
+        <p class="scripture-text">"Do not be one who shakes hands in pledge or puts up security for debts; if you lack the means to pay, your very bed will be snatched from under you."</p>
+        <p class="scripture-ref">Proverbs 22:26–27</p>
+      </div>
+    </div>
+
+    <p class="section-label">What This Means in Practice</p>
+    <ul class="practice-list">
+      <li>Before borrowing, ask: Can I repay this? What happens if I cannot?</li>
+      <li>Never borrow for consumption (food, clothing, celebrations) — only for investment that produces a return.</li>
+      <li>Avoid guaranteeing the debts of others unless you are prepared to pay them fully.</li>
+      <li>If you are already in debt, make a clear plan to repay it as quickly as possible.</li>
+      <li>Ministries and churches that borrow create obligations that can constrain or destroy their witness.</li>
+    </ul>
+
+    <div class="callout">In many communities, social pressure to spend on funerals, weddings, and celebrations drives families deeply into debt. Wisdom says: give what you have, not what you must borrow.</div>
+
+    <p class="section-label">Discussion Questions</p>
+    <ol class="discussion-list">
+      <li><span class="q-num">7</span><span>Have you or someone you know experienced the burden of debt? What did it feel like?</span></li>
+      <li><span class="q-num">8</span><span>What social pressures in your community push people to borrow money they cannot repay?</span></li>
+      <li><span class="q-num">9</span><span>How might your church help members avoid and escape debt?</span></li>
+    </ol>
+  </section>
+
+  <!-- PRINCIPLE 4 -->
+  <section class="principle" id="p4">
+    <div class="principle-header">
+      <div class="number-badge">4</div>
+      <div class="principle-title-block">
+        <p class="principle-label">Principle Four</p>
+        <h2 class="principle-title">Counting the cost is wisdom in preparation.</h2>
+      </div>
+    </div>
+
+    <p style="font-size:15px;line-height:1.65;margin-bottom:18px;">Biblical wisdom does not make financial decisions impulsively. Jesus himself taught that careful calculation before acting is the mark of a wise person. Counting the cost is not lack of faith — it is wisdom.</p>
+
+    <p class="section-label">Key Scriptures</p>
+    <div class="scripture-list">
+      <div class="scripture-item">
+        <p class="scripture-text">"Suppose one of you wants to build a tower. Won't you first sit down and estimate the cost to see if you have enough money to complete it? For if you lay the foundation and are not able to finish it, everyone who sees it will ridicule you."</p>
+        <p class="scripture-ref">Luke 14:28–30</p>
+      </div>
+      <div class="scripture-item">
+        <p class="scripture-text">"The plans of the diligent lead to profit as surely as haste leads to poverty."</p>
+        <p class="scripture-ref">Proverbs 21:5</p>
+      </div>
+      <div class="scripture-item">
+        <p class="scripture-text">"Be sure you know the condition of your flocks, give careful attention to your herds; for riches do not endure forever."</p>
+        <p class="scripture-ref">Proverbs 27:23–24</p>
+      </div>
+    </div>
+
+    <p class="section-label">What This Means in Practice</p>
+    <ul class="practice-list">
+      <li>Create a budget before every project — home, farm, business, or church building.</li>
+      <li>Distinguish wants from needs before spending.</li>
+      <li>Save first, then spend — do not spend money you do not yet have.</li>
+      <li>Planning is not distrust of God; it is honoring God with the mind He gave us.</li>
+      <li>A half-finished church building brings shame; a delayed but completed one brings glory.</li>
+    </ul>
+
+    <div class="callout">Faith and planning work together. We pray and ask God for provision, and we prepare wisely so we are ready when He provides.</div>
+
+    <p class="section-label">Discussion Questions</p>
+    <ol class="discussion-list">
+      <li><span class="q-num">10</span><span>Think of a project you have seen started but never finished. What went wrong?</span></li>
+      <li><span class="q-num">11</span><span>Do you have a budget for your household? If not, what would help you create one?</span></li>
+      <li><span class="q-num">12</span><span>How can your church encourage families to plan and save before making large purchases?</span></li>
+    </ol>
+  </section>
+
+  <!-- PRINCIPLE 5 -->
+  <section class="principle" id="p5">
+    <div class="principle-header">
+      <div class="number-badge">5</div>
+      <div class="principle-title-block">
+        <p class="principle-label">Principle Five</p>
+        <h2 class="principle-title">Tent-making is the biblical example for ministry.</h2>
+      </div>
+    </div>
+
+    <p style="font-size:15px;line-height:1.65;margin-bottom:18px;">The Apostle Paul was a trained tent-maker. He frequently supported his own ministry through his trade, refusing to place a financial burden on new congregations. This was a strategy that protected his integrity, freed him to preach without obligation, and modeled self-sufficiency for those he served.</p>
+
+    <p class="section-label">Key Scriptures</p>
+    <div class="scripture-list">
+      <div class="scripture-item">
+        <p class="scripture-text">"…and because he was a tentmaker as they were, he stayed and worked with them."</p>
+        <p class="scripture-ref">Acts 18:3</p>
+      </div>
+      <div class="scripture-item">
+        <p class="scripture-text">"…we put up with anything rather than hinder the gospel of Christ."</p>
+        <p class="scripture-ref">1 Corinthians 9:12</p>
+      </div>
+      <div class="scripture-item">
+        <p class="scripture-text">"…we worked night and day in order not to be a burden to anyone while we preached the gospel of God to you."</p>
+        <p class="scripture-ref">1 Thessalonians 2:9</p>
+      </div>
+      <div class="scripture-item">
+        <p class="scripture-text">"The worker deserves his wages."</p>
+        <p class="scripture-ref">1 Timothy 5:18</p>
+      </div>
+    </div>
+
+    <p class="section-label">What This Means in Practice</p>
+    <ul class="practice-list">
+      <li>Pastoral ministry and honest work are not in conflict — many faithful pastors support themselves through a trade or business.</li>
+      <li>Self-supporting ministry protects a pastor from unhealthy financial dependence on the congregation.</li>
+      <li>Work is dignified. A pastor who works hard models what he preaches about diligence.</li>
+      <li>In contexts where a church cannot yet support a pastor fully, tent-making allows ministry to continue without debt or compromise.</li>
+      <li>Paul also taught that churches who are able should support their pastors — tent-making is a model for integrity, not an excuse for churches to neglect their leaders.</li>
+    </ul>
+
+    <p class="section-label">Discussion Questions</p>
+    <ol class="discussion-list">
+      <li><span class="q-num">13</span><span>Do you know of pastors in your region who support themselves through work? What are the challenges and benefits?</span></li>
+      <li><span class="q-num">14</span><span>How does a pastor who works alongside his congregation affect the way people view him?</span></li>
+      <li><span class="q-num">15</span><span>What responsibility does a local church have toward its pastor's financial wellbeing?</span></li>
+    </ol>
+  </section>
+
+  <!-- SUMMARY -->
+  <section class="summary-section">
+    <h2>Summary &amp; Application</h2>
+    <p style="font-size:14px;color:rgba(255,255,255,0.6);text-align:center;margin-bottom:22px;font-style:italic;">These five principles form a foundation for biblical financial faithfulness. They are not Western ideas imposed on African culture — they are God's wisdom, given for all people in every nation and generation.</p>
+
+    <div class="summary-card">
+      <div class="summary-num">1</div>
+      <div class="summary-body">
+        <p class="summary-title">Act like a steward, not an owner.</p>
+        <p class="summary-desc">Everything belongs to God. We manage it for Him.</p>
+      </div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-num">2</div>
+      <div class="summary-body">
+        <p class="summary-title">Create systems for accountability.</p>
+        <p class="summary-desc">We will all give an account to God of our stewardship of His resources.</p>
+      </div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-num">3</div>
+      <div class="summary-body">
+        <p class="summary-title">Avoid needless debt.</p>
+        <p class="summary-desc">Debt is slavery. Borrow carefully; repay faithfully. Invest wisely.</p>
+      </div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-num">4</div>
+      <div class="summary-body">
+        <p class="summary-title">Plan the cost first.</p>
+        <p class="summary-desc">Wisdom and faith must work together to plan, execute, and measure financial plans.</p>
+      </div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-num">5</div>
+      <div class="summary-body">
+        <p class="summary-title">Develop tent-making skills and income.</p>
+        <p class="summary-desc">Work is honorable. Self-support protects ministry integrity.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<section class="contact-section">
+  <div class="contact-identity">
+    <p class="contact-ministry">Faith Makes Sense</p>
+    <p class="contact-name">Bishop Bill Yomes</p>
+  </div>
+  <div class="contact-divider"></div>
+  <div class="contact-links">
+    <a class="contact-item" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#98;&#105;&#108;&#108;&#64;&#102;&#97;&#105;&#116;&#104;&#109;&#97;&#107;&#101;&#115;&#115;&#101;&#110;&#115;&#101;&#46;&#99;&#111;&#109;">
+      <span class="contact-icon">✉</span>
+      <span class="contact-text">bill&#64;faithmakessense&#46;com</span>
+    </a>
+    <a class="contact-item" href="https://wa.me/13025027288">
+      <span class="contact-icon">💬</span>
+      <span class="contact-text">WhatsApp: +1 (302) 502-7288</span>
+    </a>
+    <a class="contact-item" href="https://faithmakessense.com" target="_blank">
+      <span class="contact-icon">🌐</span>
+      <span class="contact-text">faithmakessense.com</span>
+    </a>
+  </div>
+</section>
+
+<footer class="footer">
+  Pastor Training Handout · Biblical Stewardship · Faith Makes Sense
+</footer>
+
+<style>
+  .contact-section {
+    background: var(--warm);
+    border-top: 3px solid var(--gold);
+    padding: 32px 20px;
+    text-align: center;
+  }
+  .contact-identity {
+    margin-bottom: 20px;
+  }
+  .contact-ministry {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .contact-name {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+  .contact-divider {
+    width: 48px;
+    height: 2px;
+    background: var(--gold);
+    margin: 0 auto 20px;
+  }
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 12px 18px;
+    width: 100%;
+    max-width: 360px;
+    transition: border-color 0.2s;
+  }
+  .contact-item:active {
+    border-color: var(--gold);
+    background: var(--warm);
+  }
+  .contact-icon {
+    font-size: 18px;
+    flex-shrink

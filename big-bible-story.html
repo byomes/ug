@@ -21,6 +21,22 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
+  .home-bar {
+    background: var(--dark);
+    padding: 10px 16px;
+    border-bottom: 1px solid rgba(184,134,11,0.3);
+  }
+  .home-btn {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--gold-light);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  .home-btn:active { color: #fff; }
+
   body {
     font-family: 'Source Sans 3', Georgia, serif;
     background: var(--parchment);
@@ -379,6 +395,8 @@
 </style>
 </head>
 <body>
+
+<div class="home-bar"><a href="index.html" class="home-btn">← All Teachings</a></div>
 
 <header>
   <p class="header-eyebrow">Pastor Training Notes</p>
