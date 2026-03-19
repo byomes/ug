@@ -656,9 +656,98 @@
 
 </main>
 
+<section class="contact-section">
+  <div class="contact-identity">
+    <p class="contact-ministry">Faith Makes Sense</p>
+    <p class="contact-name">Bishop Bill Yomes</p>
+  </div>
+  <div class="contact-divider"></div>
+  <div class="contact-links">
+    <a class="contact-item" href="mailto:bill@faithmakessense.com">
+      <span class="contact-icon">✉</span>
+      <span class="contact-text">bill@faithmakessense.com</span>
+    </a>
+    <a class="contact-item" href="https://wa.me/13025027288">
+      <span class="contact-icon">💬</span>
+      <span class="contact-text">WhatsApp: +1 (302) 502-7288</span>
+    </a>
+    <a class="contact-item" href="https://faithmakessense.com" target="_blank">
+      <span class="contact-icon">🌐</span>
+      <span class="contact-text">faithmakessense.com</span>
+    </a>
+  </div>
+</section>
+
 <footer class="footer">
-  Pastor Training Handout · Biblical Stewardship Series
+  Pastor Training Handout · Biblical Stewardship Series · Faith Makes Sense
 </footer>
+
+<style>
+  .contact-section {
+    background: var(--warm);
+    border-top: 3px solid var(--gold);
+    padding: 32px 20px;
+    text-align: center;
+  }
+  .contact-identity {
+    margin-bottom: 20px;
+  }
+  .contact-ministry {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .contact-name {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+  .contact-divider {
+    width: 48px;
+    height: 2px;
+    background: var(--gold);
+    margin: 0 auto 20px;
+  }
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 12px 18px;
+    width: 100%;
+    max-width: 360px;
+    transition: border-color 0.2s;
+  }
+  .contact-item:active {
+    border-color: var(--gold);
+    background: var(--warm);
+  }
+  .contact-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .contact-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    text-align: left;
+  }
+</style>
 
 </body>
 </html>
