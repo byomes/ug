@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Functional vs. Frivolous Debt — Pastor Training Notes</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap');
+
+  :root {
+    --gold: #b8860b;
+    --gold-light: #e8c44a;
+    --dark: #1a1208;
+    --ink: #2c2010;
+    --warm: #f5f0e8;
+    --parchment: #faf7f0;
+    --accent: #6b2d0a;
+    --muted: #7a6a50;
+    --rule: #d4b896;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', Georgia, serif;
+    background: var(--parchment);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--dark);
+    color: #fff;
+    padding: 32px 20px 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg, transparent, transparent 18px,
+      rgba(184,134,11,0.07) 18px, rgba(184,134,11,0.07) 19px
+    );
+  }
+  .header-eyebrow {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 12px;
+    position: relative;
+  }
+  header h1 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: clamp(22px, 6vw, 32px);
+    font-weight: 700;
+    line-height: 1.25;
+    color: #fff;
+    position: relative;
+    margin-bottom: 8px;
+  }
+  header h1 span { color: var(--gold-light); }
+  .header-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    font-style: italic;
+    position: relative;
+    margin-top: 6px;
+  }
+
+  /* ── INTRO BLOCK ── */
+  .intro-block {
+    background: var(--warm);
+    border-left: 4px solid var(--gold);
+    padding: 22px 20px;
+  }
+  .core-question {
+    font-family: 'Lora', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+  .intro-text {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+    text-align: center;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    padding: 28px 20px 20px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .section:last-of-type { border-bottom: none; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .section-badge {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+  .badge-green { background: #1a3a1a; }
+  .badge-red   { background: #3a1a1a; }
+
+  .section-title {
+    font-family: 'Lora', serif;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .title-green { color: #2e6b2e; }
+  .title-red   { color: var(--accent); }
+
+  /* ── MARKER CARDS ── */
+  .marker-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .marker-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 14px 16px;
+    border-left: 4px solid transparent;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  }
+  .marker-card.green { border-left-color: #3a8a3a; }
+  .marker-card.red   { border-left-color: #8a2a2a; }
+
+  .marker-keyword {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .keyword-green { color: #2e6b2e; }
+  .keyword-red   { color: #8a2a2a; }
+
+  .marker-text {
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  .marker-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    margin-right: 6px;
+    flex-shrink: 0;
+    vertical-align: middle;
+  }
+  .num-green { background: #3a8a3a; }
+  .num-red   { background: #8a2a2a; }
+
+  /* ── DECISION GRID ── */
+  .grid-section {
+    background: var(--dark);
+    padding: 28px 20px;
+  }
+  .grid-title {
+    font-family: 'Lora', serif;
+    font-size: 20px;
+    color: var(--gold-light);
+    text-align: center;
+    margin-bottom: 18px;
+  }
+  .decision-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .grid-row {
+    background: rgba(255,255,255,0.06);
+    border-radius: 8px;
+    padding: 12px 14px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    align-items: start;
+  }
+  .grid-q {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.45;
+    grid-column: 1;
+  }
+  .grid-yes {
+    font-size: 13px;
+    color: #7ecf7e;
+    line-height: 1.45;
+    grid-column: 2;
+  }
+  .grid-no {
+    font-size: 13px;
+    color: #e07070;
+    line-height: 1.45;
+    grid-column: 3;
+  }
+  .grid-header-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    padding: 0 14px 6px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 4px;
+  }
+  .grid-col-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .label-q  { color: rgba(255,255,255,0.4); }
+  .label-fn { color: #7ecf7e; }
+  .label-fr { color: #e07070; }
+
+  /* ── CONTEXT NOTE ── */
+  .context-section {
+    background: var(--warm);
+    padding: 24px 20px;
+    border-top: 3px solid var(--gold);
+  }
+  .context-title {
+    font-family: 'Lora', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .context-text {
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.65;
+    margin-bottom: 10px;
+  }
+  .context-text strong {
+    color: var(--accent);
+  }
+
+  /* ── CLOSING ── */
+  .closing {
+    background: var(--dark);
+    padding: 28px 20px;
+    text-align: center;
+  }
+  .closing-rule {
+    width: 40px;
+    height: 2px;
+    background: var(--gold);
+    margin: 0 auto 16px;
+  }
+  .closing-text {
+    font-family: 'Lora', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  .closing-text span { color: var(--gold-light); }
+  .closing-meta {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-eyebrow">Pastor Training Notes · Bishop Bill Yomes</div>
+  <h1>Functional vs. <span>Frivolous</span> Debt</h1>
+  <div class="header-sub">Guidelines for Wise Stewardship in Ministry</div>
+</header>
+
+<!-- INTRO -->
+<div class="intro-block">
+  <div class="core-question">"Does this debt serve others — or satisfy self?"</div>
+  <div class="intro-text">This single question cuts across every culture because it is rooted in the nature of ministry itself. The pastor exists for the flock, not the flock for the pastor.</div>
+</div>
+
+<!-- FUNCTIONAL DEBT -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-badge badge-green">✓</div>
+    <div class="section-title title-green">Markers of Functional Debt</div>
+  </div>
+  <div class="marker-list">
+    <div class="marker-card green">
+      <div class="marker-keyword keyword-green">1. Capacity, Not Comfort</div>
+      <div class="marker-text">The debt enables ministry you could not otherwise do — building a meeting space, tools for training, education that multiplies your work. Ask: <em>would removing this thing diminish your ability to serve?</em></div>
+    </div>
+    <div class="marker-card green">
+      <div class="marker-keyword keyword-green">2. Realistic Repayment Path</div>
+      <div class="marker-text">Functional debt is borrowed against something real — expected fruit, a growing congregation, a training stipend. If there is no honest answer to <em>"how will this be repaid?"</em> — it is not functional yet.</div>
+    </div>
+    <div class="marker-card green">
+      <div class="marker-keyword keyword-green">3. Visible, Not Hidden</div>
+      <div class="marker-text">Wise debt can be explained openly to a spouse, an elder, or a mentor without shame. Frivolous debt tends to hide.</div>
+    </div>
+    <div class="marker-card green">
+      <div class="marker-keyword keyword-green">4. Slow Depreciation</div>
+      <div class="marker-text">A building, a Bible school education, a generator for the church — these hold or grow in usefulness. Upgrades and status items lose value fast and serve pride more than purpose.</div>
+    </div>
+    <div class="marker-card green">
+      <div class="marker-keyword keyword-green">5. The Church Benefits Directly</div>
+      <div class="marker-text">Draw a straight line between the debt and the people you serve. If that line is short and clear — it is likely functional. If it runs through your comfort first, pause.</div>
+    </div>
+  </div>
+</div>
+
+<!-- FRIVOLOUS DEBT -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-badge badge-red">✗</div>
+    <div class="section-title title-red">Markers of Frivolous Debt</div>
+  </div>
+  <div class="marker-list">
+    <div class="marker-card red">
+      <div class="marker-keyword keyword-red">1. Driven by Comparison</div>
+      <div class="marker-text"><em>"The pastor in the next town has one"</em> is almost never a ministry reason. Comparison-driven spending is one of the most cross-cultural traps in pastoral life.</div>
+    </div>
+    <div class="marker-card red">
+      <div class="marker-keyword keyword-red">2. Could Wait — But Won't</div>
+      <div class="marker-text">Frivolous debt often funds things that time and saving could eventually provide. The urgency is emotional, not missional.</div>
+    </div>
+    <div class="marker-card red">
+      <div class="marker-keyword keyword-red">3. Impresses Rather Than Equips</div>
+      <div class="marker-text">Anything primarily designed to signal status — to the congregation, to peers, to the community — is almost always frivolous, regardless of how it is justified.</div>
+    </div>
+    <div class="marker-card red">
+      <div class="marker-keyword keyword-red">4. Burdens the Family or Church</div>
+      <div class="marker-text">If repayment requires the congregation to carry a burden they did not agree to, or creates stress in the pastor's household that distracts from ministry — the debt is working against the mission.</div>
+    </div>
+    <div class="marker-card red">
+      <div class="marker-keyword keyword-red">5. You Wouldn't Tell Your Elders</div>
+      <div class="marker-text">Gut-check: would you present this decision to your church leaders and feel confident? If the answer is no — that discomfort is wisdom speaking.</div>
+    </div>
+  </div>
+</div>
+
+<!-- DECISION GRID -->
+<div class="grid-section">
+  <div class="grid-title">The Five Questions</div>
+  <div class="decision-grid">
+    <div class="grid-header-row">
+      <div class="grid-col-label label-q">Question</div>
+      <div class="grid-col-label label-fn">Functional</div>
+      <div class="grid-col-label label-fr">Frivolous</div>
+    </div>
+    <div class="grid-row">
+      <div class="grid-q">Who benefits most?</div>
+      <div class="grid-yes">The church / community</div>
+      <div class="grid-no">Primarily me</div>
+    </div>
+    <div class="grid-row">
+      <div class="grid-q">Is there a repayment plan?</div>
+      <div class="grid-yes">Yes, realistic</div>
+      <div class="grid-no">Vague or absent</div>
+    </div>
+    <div class="grid-row">
+      <div class="grid-q">Can I explain it openly?</div>
+      <div class="grid-yes">Yes, without shame</div>
+      <div class="grid-no">Uncomfortable to share</div>
+    </div>
+    <div class="grid-row">
+      <div class="grid-q">What does it enable?</div>
+      <div class="grid-yes">Ministry capacity</div>
+      <div class="grid-no">Personal comfort or status</div>
+    </div>
+    <div class="grid-row">
+      <div class="grid-q">Could I wait and save?</div>
+      <div class="grid-yes">Difficult or impossible</div>
+      <div class="grid-no">Yes, just impatient</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTEXT NOTE -->
+<div class="context-section">
+  <div class="context-title">A Word for the African Pastoral Context</div>
+  <div class="context-text">In many African pastoral contexts, the pastor is also a community elder — expected to display a level of provision that gives the church credibility. This creates real pressure that must be taken seriously.</div>
+  <div class="context-text">Hold these together: there is a difference between <strong>legitimate contextual credibility</strong> (a pastor who cannot be respected will not be heard) and <strong>personal ambition dressed in ministry language.</strong></div>
+  <div class="context-text">The elders around you can usually tell the difference — even when you cannot. Invite that accountability.</div>
+</div>
+
+<!-- CLOSING -->
+<div class="closing">
+  <div class="closing-rule"></div>
+  <div class="closing-text">Functional debt <span>builds the mission.</span><br>Frivolous debt borrows against it.</div>
+  <div class="closing-meta">Pastor Training Notes · Bishop Bill Yomes</div>
+</div>
+
+</body>
+</html>
